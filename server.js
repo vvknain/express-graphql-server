@@ -27,7 +27,6 @@ app.use(bodyParser.json())
 
 
 app.post('/login', function(req, res) {
-    console.log("login is hitting")
     const {email, password} = req.body
     User.findOne({email, password}, function(err, user) {
         if (err) {
@@ -43,7 +42,6 @@ app.post('/login', function(req, res) {
 })
 
 app.post('/signup', function(req, res) {
-    console.log("signup is hitting")
     const {email, password} = req.body
     const user = new User({email, password, following: 0, followers: 0, tweets: 0})
     user.save(function(err, saved_user) {

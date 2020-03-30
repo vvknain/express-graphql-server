@@ -101,8 +101,17 @@ const queryType = new GraphQLObjectType({
         },
         tweets: {
             type: new GraphQLList(TweetType),
+            args: {
+                user_id: {
+                    type: GraphQLID
+                }
+            },
             resolve: (parent, args) => {
-                return Tweet.find({parent_id: {"$exists": false}})
+                if (args.user_id) {
+                    return Tweet.find({parent_id: {"$exists": false}, user_id: args.user_id})
+                } else {
+                    return Tweet.find({parent_id: {"$exists": false}})
+                }
             }
         },
         child_tweets: {
