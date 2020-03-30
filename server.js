@@ -12,6 +12,10 @@ const withAuth = require('./middleware')
 mongo.connect("mongodb://localhost:27017/twitter-demo", {
     useNewUrlParser: true,
     useUnifiedTopology: true
+}, (err) => {
+    if(err) {
+        console.log(err)
+    }
 })
 
 mongo.connection.once('open', () => {
