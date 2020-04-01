@@ -9,7 +9,7 @@ const mongo = require('mongoose')
 const User = require('./models/user')
 const withAuth = require('./middleware')
 
-mongo.connect("mongodb://localhost:27017/twitter-demo", {
+mongo.connect("mongodb://mongo:27017/twitter-demo", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
